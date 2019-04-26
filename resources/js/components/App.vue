@@ -58,9 +58,25 @@
                 });
             }
         },
+        watch: {
+            mute(val) {
+            document.getElementById('mute').className = val ? "on" : "";
+            }
+        },
         components: {
             CrudComponent
+        },
+        created() {
+            this.read();
         }
     }
 </script>
 
+<style>
+    #app {
+        margin-left: 1em;
+    }
+    .heading h1 {
+        margin-bottom: 0;
+    }
+</style>
