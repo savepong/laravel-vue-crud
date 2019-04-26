@@ -32,10 +32,15 @@
         },
         methods: {
             create() {
-
+                this.read();
             },
             read() {
-                
+                window.axios.get('/api/cruds').then(({ data }) => {
+                    // console.log(data)
+                    data.forEach(crud => {
+                        this.cruds.push(new Crud(crud));
+                    });
+                });
             },
             update(id, color) {
 
