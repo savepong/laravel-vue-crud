@@ -27,7 +27,8 @@
     export default {
         data() {
             return {
-                cruds: []
+                cruds: [],
+                mute: false
             }
         },
         methods: {
@@ -47,6 +48,7 @@
             update(id, color) {
                 window.axios.put(`/api/cruds/${id}`, { color }).then(() => {
                     this.cruds.find(crud => crud.id === id).color = color;
+                    this.mute = false;
                 });
             },
             del(id) {
