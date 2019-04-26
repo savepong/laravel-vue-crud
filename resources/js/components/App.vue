@@ -32,7 +32,9 @@
         },
         methods: {
             create() {
-                this.read();
+                window.axios.get('/api/cruds/create').then(({ data }) => {
+                    this.cruds.push(new Crud(data));
+                });
             },
             read() {
                 window.axios.get('/api/cruds').then(({ data }) => {
@@ -43,10 +45,15 @@
                 });
             },
             update(id, color) {
-
+                window.axios.put(`/api/cruds/${id}`, { color }).then(() => {
+                    this.cruds.find(crud => crud.id === id).color = color;
+                });
             },
             del(id) {
-
+                window.axios.delete(`/api/cruds/${id}`).then(() => {
+                    let index = this.cruds.findIndex(crud => crud.id === id);
+                    this.cruds.splice(index, 1);
+                });
             }
         },
         components: {
