@@ -1,0 +1,52 @@
+<template>
+    <div id="app">
+        <div class="heading">
+            <h1>Cruds</h1>
+        </div>
+        <crud-component
+            v-for="crud in cruds"
+            v-bind="crud"
+            :key="crud.id"
+            @update="update"
+            @delete="del"
+        ></crud-component>
+        <div>
+            <button @click="create()">Add</button>
+        </div>
+    </div>
+</template>
+<script>
+    function Crud({ id, color, name}) {
+        this.id = id;
+        this.color = color;
+        this.name = name;
+    }
+
+    import CrudComponent from './CrudComponent.vue';
+
+    export default {
+        data() {
+            return {
+                cruds: []
+            }
+        },
+        methods: {
+            create() {
+
+            },
+            read() {
+                
+            },
+            update(id, color) {
+
+            },
+            del(id) {
+
+            }
+        },
+        components: {
+            CrudComponent
+        }
+    }
+</script>
+
